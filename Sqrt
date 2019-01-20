@@ -1,0 +1,31 @@
+package excercises.sqrt;
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class Sqrt {
+
+    public Sqrt() {
+
+        Compute compute = new Compute();
+        Scanner inPut = new Scanner(System.in);
+        System.out.println("Type number: ");
+        double inPutNumber = inPut.nextDouble();
+        double sqrtResult = 0;
+
+        try {
+            sqrtResult = compute.computeSquareRoot(inPutNumber);
+        }
+        catch (InputMismatchException e) {
+            System.err.println("Digits only allowed.");
+        }
+        catch (IllegalArgumentException e) {
+            System.err.println("Number must be positive. Thrown: " + inPutNumber + "\nSquare root of " + (inPutNumber * -1) + ": ");
+            sqrtResult = compute.computeSquareRoot(inPutNumber * -1);
+        }
+
+        System.out.println(sqrtResult);
+        inPut.close();
+
+    }
+}
