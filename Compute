@@ -1,0 +1,11 @@
+package excercises.sqrt;
+
+public class Compute {
+    public double computeSquareRoot(double number) {
+        if (number < 0) {
+            throw new IllegalArgumentException("Number must be positive, thrown: " + number);
+        }
+
+        return Math.sqrt(number);
+    }
+}
