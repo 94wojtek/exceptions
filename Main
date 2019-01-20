@@ -1,0 +1,9 @@
+package excercises;
+
+import excercises.sqrt.Sqrt;
+
+public class Practice {
+    public static void main(String[] args) {
+        Sqrt sqrt = new Sqrt();
+    }
+}
