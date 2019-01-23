@@ -4,28 +4,37 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Sqrt {
-
     public Sqrt() {
-
-        Compute compute = new Compute();
-        Scanner inPut = new Scanner(System.in);
-        System.out.println("Type number: ");
-        double inPutNumber = inPut.nextDouble();
+        Scanner input = new Scanner(System.in);
+        Root sqrt = new Root();
+        double number = 0;
         double sqrtResult = 0;
+        String breakLoop = " ";
 
-        try {
-            sqrtResult = compute.computeSquareRoot(inPutNumber);
-        }
-        catch (InputMismatchException e) {
-            System.err.println("Digits only allowed.");
-        }
-        catch (IllegalArgumentException e) {
-            System.err.println("Number must be positive. Thrown: " + inPutNumber + "\nSquare root of " + (inPutNumber * -1) + ": ");
-            sqrtResult = compute.computeSquareRoot(inPutNumber * -1);
-        }
+        while(true) {
+            System.out.println("Type number:");
 
-        System.out.println(sqrtResult);
-        inPut.close();
+            try {
+                number = input.nextDouble();
+                sqrtResult = sqrt.squareRoot(number);
+            }
+            catch (InputMismatchException e) {
+                System.err.println("Only digits allowed.");
+            }
+            catch (IllegalArgumentException e) {
+                System.err.println("Number must be positive. Input: " + number + "\nSquare root of " + (number * -1) + ": ");
+                sqrtResult = Math.sqrt(number * -1);
+            }
+            finally {
+                System.out.println(sqrtResult);
+                System.out.println("Do you wish to continue? [e] - exit, any key to continue");
+                breakLoop = input.next();
 
+                if (breakLoop.equals("e")) {
+                    input.close();
+                    break;
+                }
+            }
+        }
     }
 }
